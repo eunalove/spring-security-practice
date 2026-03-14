@@ -10,17 +10,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
     @GetMapping("/")
-    public String home() {
-        return "home";
+    public String root() {
+        return "redirect:/mypage";
     }
 
     @GetMapping("/mypage")
     public String mypage(Model model) {
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
         String username = authentication.getName();
-
         model.addAttribute("username", username);
 
         return "mypage";
