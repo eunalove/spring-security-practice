@@ -17,9 +17,14 @@ public class HomeController {
     @GetMapping("/mypage")
     public String mypage(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        model.addAttribute("username", username);
-
+        model.addAttribute("username", authentication.getName());
         return "mypage";
+    }
+
+    @GetMapping("/admin")
+    public String admin(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("username", authentication.getName());
+        return "admin";
     }
 }

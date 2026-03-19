@@ -18,14 +18,18 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        if (!"user1".equals(username)) {
-            throw new UsernameNotFoundException("사용자를 찾을 수 없습니다.");
-        }
-
-        return User.builder()
-                .username("user1")
-                .password(passwordEncoder.encode("1234"))
-                .roles("USER")
-                .build();
+        return switch (username) {
+            case "user1" -> User.builder()
+                    .username("user1")
+                    .password(passwordEncoder.encode("1234"))
+                    .roles("USER")
+                    .build();
+            case "admin" -> User.builder()
+                    .username("admin")
+                    .password(passwordEncoder.encode("1234"))
+                    .roles("ADMIN")
+                    .build();
+            default -> throw new UsernameNotFoundException("사용자를 찾을 수 없습니다.");
+        };
     }
 }
