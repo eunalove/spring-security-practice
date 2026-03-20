@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Page</title>
+</head>
+<body>
+  <h1>관리자 페이지</h1>
+
+  <p>로그인 사용자: <span th:text="${username}"></span></p>
+  <p>권한: ROLE_ADMIN</p>
+
+  <a href="/mypage">마이페이지로 이동</a>
+</body>
+</html>
